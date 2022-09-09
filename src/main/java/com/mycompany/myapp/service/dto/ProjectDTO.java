@@ -2,6 +2,7 @@ package com.mycompany.myapp.service.dto;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.validation.constraints.*;
 
 /**
  * A DTO for the {@link com.mycompany.myapp.domain.Project} entity.
@@ -12,6 +13,9 @@ public class ProjectDTO implements Serializable {
     private Long id;
 
     private String name;
+
+    @Size(min = 3, max = 5)
+    private String code;
 
     public Long getId() {
         return id;
@@ -27,6 +31,14 @@ public class ProjectDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @Override
@@ -56,6 +68,7 @@ public class ProjectDTO implements Serializable {
         return "ProjectDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", code='" + getCode() + "'" +
             "}";
     }
 }

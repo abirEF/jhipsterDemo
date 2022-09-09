@@ -13,6 +13,7 @@ entity Coffee {
 
 entity Project {
   name String
+  code String minlength(3) maxlength(5)
 }
 
 entity Label {

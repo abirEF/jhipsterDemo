@@ -2,6 +2,7 @@ package com.mycompany.myapp.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -24,6 +25,10 @@ public class Project implements Serializable {
 
     @Column(name = "name")
     private String name;
+
+    @Size(min = 3, max = 5)
+    @Column(name = "code", length = 5)
+    private String code;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -53,6 +58,19 @@ public class Project implements Serializable {
         this.name = name;
     }
 
+    public String getCode() {
+        return this.code;
+    }
+
+    public Project code(String code) {
+        this.setCode(code);
+        return this;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -78,6 +96,7 @@ public class Project implements Serializable {
         return "Project{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", code='" + getCode() + "'" +
             "}";
     }
 }

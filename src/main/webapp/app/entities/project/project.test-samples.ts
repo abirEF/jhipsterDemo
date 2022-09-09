@@ -5,13 +5,15 @@ export const sampleWithRequiredData: IProject = {
 };
 
 export const sampleWithPartialData: IProject = {
-  id: 86564,
-  name: 'compress redefine',
+  id: 56052,
+  name: 'dedicated Agent deposit',
+  code: 'users',
 };
 
 export const sampleWithFullData: IProject = {
-  id: 60153,
-  name: 'Awesome users',
+  id: 24713,
+  name: 'Borders Health',
+  code: 'Respo',
 };
 
 export const sampleWithNewData: NewProject = {

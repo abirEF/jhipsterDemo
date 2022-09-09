@@ -18,7 +18,8 @@
         "title": "Project"
       },
       "id": "ID",
-      "name": "Name"
+      "name": "Name",
+      "code": "Code"
     }
   }
 }

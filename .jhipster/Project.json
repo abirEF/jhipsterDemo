@@ -8,6 +8,13 @@
     {
       "fieldName": "name",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "5",
+      "fieldValidateRulesMinlength": "3"
     }
   ],
   "fluentMethods": true,

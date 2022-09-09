@@ -19,6 +19,7 @@ type ProjectFormDefaults = Pick<NewProject, 'id'>;
 type ProjectFormGroupContent = {
   id: FormControl<IProject['id'] | NewProject['id']>;
   name: FormControl<IProject['name']>;
+  code: FormControl<IProject['code']>;
 };
 
 export type ProjectFormGroup = FormGroup<ProjectFormGroupContent>;
@@ -39,6 +40,9 @@ export class ProjectFormService {
         }
       ),
       name: new FormControl(projectRawValue.name),
+      code: new FormControl(projectRawValue.code, {
+        validators: [Validators.minLength(3), Validators.maxLength(5)],
+      }),
     });
   }
 

@@ -34,6 +34,9 @@ class ProjectResourceIT {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CODE = "AAAAA";
+    private static final String UPDATED_CODE = "BBBBB";
+
     private static final String ENTITY_API_URL = "/api/projects";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -61,7 +64,7 @@ class ProjectResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Project createEntity(EntityManager em) {
-        Project project = new Project().name(DEFAULT_NAME);
+        Project project = new Project().name(DEFAULT_NAME).code(DEFAULT_CODE);
         return project;
     }
 
@@ -72,7 +75,7 @@ class ProjectResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Project createUpdatedEntity(EntityManager em) {
-        Project project = new Project().name(UPDATED_NAME);
+        Project project = new Project().name(UPDATED_NAME).code(UPDATED_CODE);
         return project;
     }
 
@@ -96,6 +99,7 @@ class ProjectResourceIT {
         assertThat(projectList).hasSize(databaseSizeBeforeCreate + 1);
         Project testProject = projectList.get(projectList.size() - 1);
         assertThat(testProject.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testProject.getCode()).isEqualTo(DEFAULT_CODE);
     }
 
     @Test
@@ -129,7 +133,8 @@ class ProjectResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(project.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
+            .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)));
     }
 
     @Test
@@ -144,7 +149,8 @@ class ProjectResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(project.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
+            .andExpect(jsonPath("$.code").value(DEFAULT_CODE));
     }
 
     @Test
@@ -166,7 +172,7 @@ class ProjectResourceIT {
         Project updatedProject = projectRepository.findById(project.getId()).get();
         // Disconnect from session so that the updates on updatedProject are not directly saved in db
         em.detach(updatedProject);
-        updatedProject.name(UPDATED_NAME);
+        updatedProject.name(UPDATED_NAME).code(UPDATED_CODE);
         ProjectDTO projectDTO = projectMapper.toDto(updatedProject);
 
         restProjectMockMvc
@@ -182,6 +188,7 @@ class ProjectResourceIT {
         assertThat(projectList).hasSize(databaseSizeBeforeUpdate);
         Project testProject = projectList.get(projectList.size() - 1);
         assertThat(testProject.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testProject.getCode()).isEqualTo(UPDATED_CODE);
     }
 
     @Test
@@ -276,6 +283,7 @@ class ProjectResourceIT {
         assertThat(projectList).hasSize(databaseSizeBeforeUpdate);
         Project testProject = projectList.get(projectList.size() - 1);
         assertThat(testProject.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testProject.getCode()).isEqualTo(DEFAULT_CODE);
     }
 
     @Test
@@ -290,7 +298,7 @@ class ProjectResourceIT {
         Project partialUpdatedProject = new Project();
         partialUpdatedProject.setId(project.getId());
 
-        partialUpdatedProject.name(UPDATED_NAME);
+        partialUpdatedProject.name(UPDATED_NAME).code(UPDATED_CODE);
 
         restProjectMockMvc
             .perform(
@@ -305,6 +313,7 @@ class ProjectResourceIT {
         assertThat(projectList).hasSize(databaseSizeBeforeUpdate);
         Project testProject = projectList.get(projectList.size() - 1);
         assertThat(testProject.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testProject.getCode()).isEqualTo(UPDATED_CODE);
     }
 
     @Test

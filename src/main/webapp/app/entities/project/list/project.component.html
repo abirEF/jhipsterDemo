@@ -44,6 +44,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="code">
+            <div class="d-flex">
+              <span jhiTranslate="myFirstApp.project.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -53,6 +59,7 @@
             <a [routerLink]="['/project', project.id, 'view']">{{ project.id }}</a>
           </td>
           <td>{{ project.name }}</td>
+          <td>{{ project.code }}</td>
           <td class="text-end">
             <div class="btn-group">
               <button

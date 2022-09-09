@@ -162,6 +162,8 @@ describe('Project e2e test', () => {
     it('should create an instance of Project', () => {
       cy.get(`[data-cy="name"]`).type('District').should('have.value', 'District');
 
+      cy.get(`[data-cy="code"]`).type('inter').should('have.value', 'inter');
+
       cy.get(entityCreateSaveButtonSelector).click();
 
       cy.wait('@postEntityRequest').then(({ response }) => {
