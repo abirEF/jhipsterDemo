@@ -1,0 +1,28 @@
+{
+  "myFirstApp": {
+    "coffee": {
+      "home": {
+        "title": "Coffees",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Coffee",
+        "createOrEditLabel": "Créer ou éditer un Coffee",
+        "notFound": "Aucun Coffee trouvé"
+      },
+      "created": "Un nouveau Coffee a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Coffee avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Coffee avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Coffee {{ id }} ?"
+      },
+      "detail": {
+        "title": "Coffee"
+      },
+      "id": "ID",
+      "fieldName": "Field Name",
+      "name": "Name",
+      "help": {
+        "fieldName": "fieldName"
+      }
+    }
+  }
+}

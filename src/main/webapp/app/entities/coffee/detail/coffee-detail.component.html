@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="coffee">
+      <h2 data-cy="coffeeDetailsHeading"><span jhiTranslate="myFirstApp.coffee.detail.title">Coffee</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ coffee.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="myFirstApp.coffee.fieldName" [ngbTooltip]="'myFirstApp.coffee.help.fieldName' | translate">Field Name</span>
+        </dt>
+        <dd>
+          <span>{{ coffee.fieldName }}</span>
+        </dd>
+        <dt><span jhiTranslate="myFirstApp.coffee.name">Name</span></dt>
+        <dd>
+          <span>{{ coffee.name }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/coffee', coffee.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

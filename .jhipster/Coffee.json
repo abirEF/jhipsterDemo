@@ -1,0 +1,29 @@
+{
+  "applications": "*",
+  "changelogDate": "20220909122521",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "coffee",
+  "fields": [
+    {
+      "fieldName": "fieldName",
+      "fieldType": "String",
+      "javadoc": "fieldName"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "10"
+    }
+  ],
+  "fluentMethods": true,
+  "incrementalChangelog": true,
+  "javadoc": "The Entity entity.\\n@author A true hipster",
+  "jpaMetamodelFiltering": false,
+  "name": "Coffee",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}
